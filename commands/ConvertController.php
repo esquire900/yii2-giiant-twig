@@ -1,8 +1,8 @@
 <?php
 
-namespace esquire900\giiantTwig\commands;
+namespace esquire900\giianttwig\commands;
 
-
+use yii\console\Controller;
 class ConvertController extends Controller
 {
     public function actionIndex(){

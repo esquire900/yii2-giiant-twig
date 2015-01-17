@@ -22,10 +22,18 @@ class Bootstrap implements BootstrapInterface
         if ($app->hasModule('gii')) {
 
             if (!isset($app->getModule('gii')->generators['giiant-crud']['templates']['twig'])) {
-                $app->getModule('gii')->generators['giiant-crud']['templates']['twig'] = 'esquire900/yii2-giiant-twig/crud';
+                $app->getModule('gii')->generators['giiant-crud'] =  [
+                    //generator class
+                    'class'     => 'schmunk42\giiant\crud\Generator',
+                    //setting for out templates
+                    'templates' => [
+                        // template name => path to template
+                        'twig' =>'@vendor/esquire900/yii2-giiant-twig/crud',
+                    ]
+                ];
             }
             if ($app instanceof \yii\console\Application) {
-                $app->controllerMap['giiant-twig'] = 'esquire900\giiantTwig\commands\ConvertController';
+                $app->controllerMap['giiant-twig'] = 'esquire900\\giianttwig\commands\ConvertController';
             }
         }
     }
