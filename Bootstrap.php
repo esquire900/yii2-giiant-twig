@@ -1,13 +1,6 @@
 <?php
-/**
- * @link http://www.diemeisterei.de/
- * @copyright Copyright (c) 2014 diemeisterei GmbH, Stuttgart
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 
-namespace esquire\giiantTwig;
+namespace esquire900\giiantTwig;
 
 use yii\base\Application;
 use yii\base\BootstrapInterface;
@@ -19,7 +12,6 @@ use yii\base\BootstrapInterface;
  */
 class Bootstrap implements BootstrapInterface
 {
-
     /**
      * Bootstrap method to be called during application bootstrap stage.
      *
@@ -27,17 +19,14 @@ class Bootstrap implements BootstrapInterface
      */
     public function bootstrap($app)
     {
-//        if ($app->hasModule('gii')) {
-//
-//            if (!isset($app->getModule('gii')->generators['giiant-model'])) {
-//                $app->getModule('gii')->generators['giiant-model'] = 'schmunk42\giiant\model\Generator';
-//            }
-//            if (!isset($app->getModule('gii')->generators['giiant-crud'])) {
-//                $app->getModule('gii')->generators['giiant-crud'] = 'schmunk42\giiant\crud\Generator';
-//            }
-//            if ($app instanceof \yii\console\Application) {
-//                $app->controllerMap['giiant-batch'] = 'schmunk42\giiant\commands\BatchController';
-//            }
-//        }
+        if ($app->hasModule('gii')) {
+
+            if (!isset($app->getModule('gii')->generators['giiant-crud']['templates']['twig'])) {
+                $app->getModule('gii')->generators['giiant-crud']['templates']['twig'] = 'esquire900/yii2-giiant-twig/crud';
+            }
+            if ($app instanceof \yii\console\Application) {
+                $app->controllerMap['giiant-twig'] = 'esquire900\giiantTwig\commands\ConvertController';
+            }
+        }
     }
 }
