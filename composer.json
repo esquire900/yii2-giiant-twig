@@ -21,7 +21,6 @@
     "bootstrap": "esquire900\\giianttwig\\Bootstrap"
   },
   "require": {
-    "yiisoft/yii2-gii": "*",
     "yiisoft/yii2-twig": "*",
     "schmunk42/yii2-giiant": "*"
   }
