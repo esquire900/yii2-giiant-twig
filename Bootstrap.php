@@ -1,6 +1,6 @@
 <?php
 
-namespace esquire900\giiantTwig;
+namespace esquire900\giianttwig;
 
 use yii\base\Application;
 use yii\base\BootstrapInterface;

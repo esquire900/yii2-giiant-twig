@@ -14,11 +14,11 @@
   ],
   "autoload": {
     "psr-4": {
-      "eqsuire900\\giiantTwig\\": ""
+      "eqsuire900\\giianttwig\\": ""
     }
   },
   "extra": {
-    "bootstrap": "esquire900\\giiantTwig\\Bootstrap"
+    "bootstrap": "esquire900\\giianttwig\\Bootstrap"
   },
   "require": {
     "yiisoft/yii2-gii": "~2.0.2",
