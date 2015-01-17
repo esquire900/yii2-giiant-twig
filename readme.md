@@ -10,6 +10,40 @@ This extension provides templates for the CRUD models from Giiant in the twig te
 templates available for twig yet in the yii2 context, so this should save a lot of time for those wanting to work
 with twig :)
 
+That means a form will not look like this:
+
+    <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
+        <?= $form->field($model, 'name') ?>
+        <?= $form->field($model, 'email') ?>
+        <?= $form->field($model, 'subject') ?>
+        <?= $form->field($model, 'body')->textArea(['rows' => 6]) ?>
+        <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+            'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
+        ]) ?>
+        <div class="form-group">
+            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+        </div>
+    <?php ActiveForm::end(); ?>
+
+But more like this
+
+    {% set form = active_form_begin({
+		'action': ['index'],
+		'method': 'get'
+	}) %}
+
+    {{ form.field(model, 'id') }}
+    {{ form.field(model, 'name') }}
+    {{ form.field(model, 'owner_name') }}
+    {{ form.field(model, 'owner_avatar') }}
+    {{ form.field(model, 'description') }}
+
+    <div class="form-group">
+        {{ html.submitButton('Search', {'class' : 'btn btn-primary'}) | raw }}
+        {{ html.resetButton('Reset', {'class' : 'btn btn-primary'}) | raw }}
+    </div>
+
+	{{ active_form_end() }}
 
 Installation
 ------------
@@ -40,6 +74,13 @@ them automagically, simply run the following from the root folder
     ./yii giiant-twig
 
 (for basic app only, but you can simply change the behavior for other templates)
+
+
+Why should I even learn this stuff?
+------------
+
+Not only because it's easier to read for non-coders (like those hipster designers nowadays), but it forces you to only use
+"view" logic in your views, which gives cleaner code and better serparation of responsibilities.
 
 Thanks
 -----
